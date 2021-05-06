@@ -1,5 +1,5 @@
 Compiling Program: E:\repositories\JenkinsDemo\AppSrc\WebApp.src
-Memory Available: 8728772608
+Memory Available: 8855822336
 1>Use AllWebAppClasses.pkg
 Using pre-compiled package ALLWEBAPPCLASSES.PKG
 Including file: AllWebAppClasses.x64.pkd    (C:\Appl\DataFlex 20.0\Pkg\AllWebAppClasses.x64.pkd)
@@ -160,853 +160,856 @@ Including file: LoginEncryptionKey.inc    (E:\repositories\JenkinsDemo\AppSrc\Lo
 32537>                Object oDashboard_itm is a cWebMenuItem
 32539>                    Set psCaption to C_$Dashboard
 32540>                    
-32540>                    WebRegisterPath ntNavigateBegin oDashboard
+32540>                    RegisterPath ntNavigateBegin oDashboard
+                    RegisterPath ntNavigateBegin oDashboard
+ERROR: 4298 Command not found REGISTERPATH ON LINE: 45 (32540) OF FILE: E:\repositories\JenkinsDemo\AppSrc\WebApp.src
+32540>
+32540>                    Procedure OnClick
+32543>                        Send NavigatePath
+32544>                    End_Procedure
+32545>                End_Object
 32546>
-32546>                    Procedure OnClick
-32549>                        Send NavigatePath
-32550>                    End_Procedure
-32551>                End_Object
-32552>
-32552>                Object oViewMenu is a cWebMenuItem
-32554>                    Set psCaption to C_$View
-32555>                End_Object
-32556>
-32556>                Object oSignOut_itm is a cWebMenuItem
-32558>                    Set psCaption to C_$LogOut
-32559>
-32559>                    Procedure OnClick
-32562>                        Send RequestLogOut of ghoWebSessionManager
-32563>                    End_Procedure
-32564>                End_Object
-32565>            End_Object  
-32566>
-32566>            Object oBackButton is a cWebButton
-32568>                Set psCSSClass to "WebBack_Icon"
-32569>                Set pbRender to False
-32570>                
-32570>                Procedure OnClick
-32573>                    Handle hoTop
-32573>                    
-32573>                    Get TopViewHandle of oViewStack to hoTop
-32574>                    If (hoTop > 0) Begin
-32576>                        Send NavigateCancel of hoTop 
-32577>                    End
-32577>                End_Procedure
-32578>            End_Object
-32579>            
-32579>            Send AddClient of oViewStack Self
+32546>                Object oViewMenu is a cWebMenuItem
+32548>                    Set psCaption to C_$View
+32549>                End_Object
+32550>
+32550>                Object oSignOut_itm is a cWebMenuItem
+32552>                    Set psCaption to C_$LogOut
+32553>
+32553>                    Procedure OnClick
+32556>                        Send RequestLogOut of ghoWebSessionManager
+32557>                    End_Procedure
+32558>                End_Object
+32559>            End_Object  
+32560>
+32560>            Object oBackButton is a cWebButton
+32562>                Set psCSSClass to "WebBack_Icon"
+32563>                Set pbRender to False
+32564>                
+32564>                Procedure OnClick
+32567>                    Handle hoTop
+32567>                    
+32567>                    Get TopViewHandle of oViewStack to hoTop
+32568>                    If (hoTop > 0) Begin
+32570>                        Send NavigateCancel of hoTop 
+32571>                    End
+32571>                End_Procedure
+32572>            End_Object
+32573>            
+32573>            Send AddClient of oViewStack Self
+32574>                
+32574>            Procedure OnUpdateViewStack
+32577>                Handle hoTop hoDflt
+32577>                Integer eMode
+32577>                Boolean bTop
+32577>                
+32577>                WebGet peMode of ghoWebApp to eMode
 32580>                
-32580>            Procedure OnUpdateViewStack
-32583>                Handle hoTop hoDflt
-32583>                Integer eMode
-32583>                Boolean bTop
+32580>                Get TopViewHandle of oViewStack to hoTop
+32581>                Get GetDefaultView to hoDflt
+32582>                Move (hoTop=0 or hoTop=hoDflt) to bTop
 32583>                
-32583>                WebGet peMode of ghoWebApp to eMode
-32586>                
-32586>                Get TopViewHandle of oViewStack to hoTop
-32587>                Get GetDefaultView to hoDflt
-32588>                Move (hoTop=0 or hoTop=hoDflt) to bTop
-32589>                
-32589>                WebSet pbRender of oBackButton to (not(bTop) and eMode >= rmMobile)
-32590>                WebSet pbRender of oMenuButton to (bTop or eMode < rmMobile)
-32591>            End_Procedure
-32592>
-32592>        End_Object
-32593>
-32593>        Object oCaptionPanel is a cWebPanel
-32595>            Set piColumnCount to 12
-32596>
-32596>            Object oCaptionBreadcrumb is a cWebBreadcrumb
-32598>                Set peBreadcrumbStyle to crumbCaption
-32599>                WebSetResponsive peBreadcrumbStyle rmMobile to crumbDropDown
-32600>            End_Object         
-32601>        End_Object
-32602>        
-32602>        Object oActionPanel is a cWebPanel
-32604>            Set peRegion to prRight
-32605>            Set piColumnCount to 1
-32606>            Set piWidth to 120
-32607>
-32607>            Object oMainActions is a cWebActionBar
-32609>                Set psGroupName to "MainActions"
-32610>
-32610>                Set piColumnSpan to 0
-32611>                Set peAlign to alignRight
-32612>            End_Object
-32613>        End_Object
-32614>
-32614>        Object oBreadcrumbPanel is a cWebPanel
-32616>            Set peRegion to prBottom
-32617>            
-32617>            Object oHorizontalBreadcrumb is a cWebBreadcrumb
-32619>                WebSetResponsive pbRender rmMobile to False
-32620>            End_Object         
-32621>        End_Object
-32622>
-32622>    End_Object    
-32623>
-32623>    Use SessionManager.wo
+32583>                WebSet pbRender of oBackButton to (not(bTop) and eMode >= rmMobile)
+32584>                WebSet pbRender of oMenuButton to (bTop or eMode < rmMobile)
+32585>            End_Procedure
+32586>
+32586>        End_Object
+32587>
+32587>        Object oCaptionPanel is a cWebPanel
+32589>            Set piColumnCount to 12
+32590>
+32590>            Object oCaptionBreadcrumb is a cWebBreadcrumb
+32592>                Set peBreadcrumbStyle to crumbCaption
+32593>                WebSetResponsive peBreadcrumbStyle rmMobile to crumbDropDown
+32594>            End_Object         
+32595>        End_Object
+32596>        
+32596>        Object oActionPanel is a cWebPanel
+32598>            Set peRegion to prRight
+32599>            Set piColumnCount to 1
+32600>            Set piWidth to 120
+32601>
+32601>            Object oMainActions is a cWebActionBar
+32603>                Set psGroupName to "MainActions"
+32604>
+32604>                Set piColumnSpan to 0
+32605>                Set peAlign to alignRight
+32606>            End_Object
+32607>        End_Object
+32608>
+32608>        Object oBreadcrumbPanel is a cWebPanel
+32610>            Set peRegion to prBottom
+32611>            
+32611>            Object oHorizontalBreadcrumb is a cWebBreadcrumb
+32613>                WebSetResponsive pbRender rmMobile to False
+32614>            End_Object         
+32615>        End_Object
+32616>
+32616>    End_Object    
+32617>
+32617>    Use SessionManager.wo
 Including file: SessionManager.wo    (E:\repositories\JenkinsDemo\AppSrc\SessionManager.wo)
-32623>>>Use cWebSessionManagerStandard.pkg
+32617>>>Use cWebSessionManagerStandard.pkg
 Including file: cWebSessionManagerStandard.pkg    (C:\Appl\DataFlex 20.0\Pkg\cWebSessionManagerStandard.pkg)
-32623>>>>>Use cWebSessionManager.pkg
-32623>>>>>Use cWebAppSessionDataDictionary.dd
+32617>>>>>Use cWebSessionManager.pkg
+32617>>>>>Use cWebAppSessionDataDictionary.dd
 Including file: cWebAppSessionDataDictionary.dd    (C:\Appl\DataFlex 20.0\Pkg\cWebAppSessionDataDictionary.dd)
-32623>>>>>>>Use DataDict.pkg
-32623>>>>>>>
-32623>>>>>>>Open WebAppSession
+32617>>>>>>>Use DataDict.pkg
+32617>>>>>>>
+32617>>>>>>>Open WebAppSession
 Including file: WebAppSession.fd    (E:\repositories\JenkinsDemo\DDSrc\WebAppSession.fd)
-32625>>>>>>>Open WebAppUser
+32619>>>>>>>Open WebAppUser
 Including file: WebAppUser.fd    (E:\repositories\JenkinsDemo\DDSrc\WebAppUser.fd)
+32621>>>>>>>
+32621>>>>>>>Class cWebAppSessionDataDictionary is a DataDictionary
+32622>>>>>>>    
+32622>>>>>>>    Procedure Construct_Object
+32624>>>>>>>        Forward Send Construct_Object
+32626>>>>>>>        Set Main_File to WebAppSession.File_Number
 32627>>>>>>>
-32627>>>>>>>Class cWebAppSessionDataDictionary is a DataDictionary
-32628>>>>>>>    
-32628>>>>>>>    Procedure Construct_Object
-32630>>>>>>>        Forward Send Construct_Object
-32632>>>>>>>        Set Main_File to WebAppSession.File_Number
+32627>>>>>>>        Set Add_Server_File to WebAppUser.File_Number
+32628>>>>>>>
+32628>>>>>>>        Set ParentNullAllowed WebAppUser.File_Number to True
+32629>>>>>>>
+32629>>>>>>>        Set Foreign_Field_Option DD_KEYFIELD DD_NOPUT to True
+32630>>>>>>>        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
+32631>>>>>>>        Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
+32632>>>>>>>        Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
 32633>>>>>>>
-32633>>>>>>>        Set Add_Server_File to WebAppUser.File_Number
-32634>>>>>>>
-32634>>>>>>>        Set ParentNullAllowed WebAppUser.File_Number to True
-32635>>>>>>>
-32635>>>>>>>        Set Foreign_Field_Option DD_KEYFIELD DD_NOPUT to True
-32636>>>>>>>        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
-32637>>>>>>>        Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
-32638>>>>>>>        Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
-32639>>>>>>>
-32639>>>>>>>        Set Field_Option Field WebAppSession.Active DD_RETAIN to True
-32640>>>>>>>        Set Field_Checkbox_Values Field WebAppSession.Active to "Y" "N"
-32641>>>>>>>        Set Field_Error Field WebAppSession.Active to 500 "Invalid WebAppSession Active State"
-32642>>>>>>>
-32642>>>>>>>    End_Procedure
-32643>>>>>>>
-32643>>>>>>>    Procedure Creating
-32645>>>>>>>        DateTime dtCurrentDateTime
+32633>>>>>>>        Set Field_Option Field WebAppSession.Active DD_RETAIN to True
+32634>>>>>>>        Set Field_Checkbox_Values Field WebAppSession.Active to "Y" "N"
+32635>>>>>>>        Set Field_Error Field WebAppSession.Active to 500 "Invalid WebAppSession Active State"
+32636>>>>>>>
+32636>>>>>>>    End_Procedure
+32637>>>>>>>
+32637>>>>>>>    Procedure Creating
+32639>>>>>>>        DateTime dtCurrentDateTime
+32639>>>>>>>        
+32639>>>>>>>        Forward Send Creating
+32641>>>>>>>        
+32641>>>>>>>        //  Init usecounter
+32641>>>>>>>        Move 0 to WebAppSession.UseCount
+32642>>>>>>>        
+32642>>>>>>>        //  Set the creation and access time to the current time
+32642>>>>>>>        Move (CurrentDateTime()) to dtCurrentDateTime
+32643>>>>>>>    
+32643>>>>>>>        Get TimeToString dtCurrentDateTime to WebAppSession.CreateTime
+32644>>>>>>>        Get TimeToString dtCurrentDateTime to WebAppSession.LastAccessTime
 32645>>>>>>>        
-32645>>>>>>>        Forward Send Creating
-32647>>>>>>>        
-32647>>>>>>>        //  Init usecounter
-32647>>>>>>>        Move 0 to WebAppSession.UseCount
-32648>>>>>>>        
-32648>>>>>>>        //  Set the creation and access time to the current time
-32648>>>>>>>        Move (CurrentDateTime()) to dtCurrentDateTime
-32649>>>>>>>    
-32649>>>>>>>        Get TimeToString dtCurrentDateTime to WebAppSession.CreateTime
-32650>>>>>>>        Get TimeToString dtCurrentDateTime to WebAppSession.LastAccessTime
-32651>>>>>>>        
-32651>>>>>>>        Move dtCurrentDateTime to WebAppSession.CreateDate
-32652>>>>>>>        Move dtCurrentDateTime to WebAppSession.LastAccessDate
-32653>>>>>>>    End_Procedure
-32654>>>>>>>    
-32654>>>>>>>    
-32654>>>>>>>    
-32654>>>>>>>    //
-32654>>>>>>>    //  Converts the given time to an string that can be saved in the database.
-32654>>>>>>>    //
-32654>>>>>>>    //  Params:
-32654>>>>>>>    //      dtTime  Time to convert
-32654>>>>>>>    //  Returns:
-32654>>>>>>>    //      String with "HH:MM:SS" format
-32654>>>>>>>    //
-32654>>>>>>>    Function TimeToString DateTime dtTime Returns String
-32656>>>>>>>        String sHours sMinutes sSeconds
-32656>>>>>>>        
-32656>>>>>>>        //  Extract parts
-32656>>>>>>>        Move (String(DateGetHour(dtTime))) to sHours
-32657>>>>>>>        Move (String(DateGetMinute(dtTime))) to sMinutes
-32658>>>>>>>        Move (String(DateGetSecond(dtTime))) to sSeconds
-32659>>>>>>>        
-32659>>>>>>>        //  Fill out with 0
-32659>>>>>>>        If (Length(sHours) = 1) ;            Move ("0" + sHours) to sHours
-32662>>>>>>>        If (Length(sMinutes) = 1) ;            Move ("0" + sMinutes) to sMinutes
-32665>>>>>>>        If (Length(sSeconds) = 1) ;            Move ("0" + sSeconds) to sSeconds
-32668>>>>>>>        
-32668>>>>>>>        Function_Return (sHours + ":" + sMinutes + ":" + sSeconds)
-32669>>>>>>>    End_Function
-32670>>>>>>>    
-32670>>>>>>>    //
-32670>>>>>>>    //  Sets the time of the datetime variable to the time in the string.
-32670>>>>>>>    //
-32670>>>>>>>    //  Params:
-32670>>>>>>>    //      dtTime  Datetime variable to add time to
-32670>>>>>>>    //      sTimeString String with time in the format "HH:MM:SS"
-32670>>>>>>>    //  Returns:
-32670>>>>>>>    //      dtDateTime with the loaded time
-32670>>>>>>>    //
-32670>>>>>>>    Function StringToTime DateTime dtTime String sTimeString Returns DateTime
-32672>>>>>>>        String sHours sMinutes sSeconds
+32645>>>>>>>        Move dtCurrentDateTime to WebAppSession.CreateDate
+32646>>>>>>>        Move dtCurrentDateTime to WebAppSession.LastAccessDate
+32647>>>>>>>    End_Procedure
+32648>>>>>>>    
+32648>>>>>>>    
+32648>>>>>>>    
+32648>>>>>>>    //
+32648>>>>>>>    //  Converts the given time to an string that can be saved in the database.
+32648>>>>>>>    //
+32648>>>>>>>    //  Params:
+32648>>>>>>>    //      dtTime  Time to convert
+32648>>>>>>>    //  Returns:
+32648>>>>>>>    //      String with "HH:MM:SS" format
+32648>>>>>>>    //
+32648>>>>>>>    Function TimeToString DateTime dtTime Returns String
+32650>>>>>>>        String sHours sMinutes sSeconds
+32650>>>>>>>        
+32650>>>>>>>        //  Extract parts
+32650>>>>>>>        Move (String(DateGetHour(dtTime))) to sHours
+32651>>>>>>>        Move (String(DateGetMinute(dtTime))) to sMinutes
+32652>>>>>>>        Move (String(DateGetSecond(dtTime))) to sSeconds
+32653>>>>>>>        
+32653>>>>>>>        //  Fill out with 0
+32653>>>>>>>        If (Length(sHours) = 1) ;            Move ("0" + sHours) to sHours
+32656>>>>>>>        If (Length(sMinutes) = 1) ;            Move ("0" + sMinutes) to sMinutes
+32659>>>>>>>        If (Length(sSeconds) = 1) ;            Move ("0" + sSeconds) to sSeconds
+32662>>>>>>>        
+32662>>>>>>>        Function_Return (sHours + ":" + sMinutes + ":" + sSeconds)
+32663>>>>>>>    End_Function
+32664>>>>>>>    
+32664>>>>>>>    //
+32664>>>>>>>    //  Sets the time of the datetime variable to the time in the string.
+32664>>>>>>>    //
+32664>>>>>>>    //  Params:
+32664>>>>>>>    //      dtTime  Datetime variable to add time to
+32664>>>>>>>    //      sTimeString String with time in the format "HH:MM:SS"
+32664>>>>>>>    //  Returns:
+32664>>>>>>>    //      dtDateTime with the loaded time
+32664>>>>>>>    //
+32664>>>>>>>    Function StringToTime DateTime dtTime String sTimeString Returns DateTime
+32666>>>>>>>        String sHours sMinutes sSeconds
+32666>>>>>>>        
+32666>>>>>>>        //  Extract parts
+32666>>>>>>>        Move (Mid(sTimeString, 2, 1)) to sHours
+32667>>>>>>>        Move (Mid(sTimeString, 2, 4)) to sMinutes
+32668>>>>>>>        Move (Mid(sTimeString, 2, 7)) to sSeconds
+32669>>>>>>>        
+32669>>>>>>>        //  Set to DateTime
+32669>>>>>>>        Move (DateSetHour(dtTime, (Integer(sHours)))) to dtTime
+32670>>>>>>>        Move (DateSetMinute(dtTime, (Integer(sMinutes)))) to dtTime
+32671>>>>>>>        Move (DateSetSecond(dtTime, (Integer(sSeconds)))) to dtTime
 32672>>>>>>>        
-32672>>>>>>>        //  Extract parts
-32672>>>>>>>        Move (Mid(sTimeString, 2, 1)) to sHours
-32673>>>>>>>        Move (Mid(sTimeString, 2, 4)) to sMinutes
-32674>>>>>>>        Move (Mid(sTimeString, 2, 7)) to sSeconds
-32675>>>>>>>        
-32675>>>>>>>        //  Set to DateTime
-32675>>>>>>>        Move (DateSetHour(dtTime, (Integer(sHours)))) to dtTime
-32676>>>>>>>        Move (DateSetMinute(dtTime, (Integer(sMinutes)))) to dtTime
-32677>>>>>>>        Move (DateSetSecond(dtTime, (Integer(sSeconds)))) to dtTime
-32678>>>>>>>        
-32678>>>>>>>        Function_Return dtTime
-32679>>>>>>>    End_Function
-32680>>>>>>>
-32680>>>>>>>End_Class
-32681>>>>>Use cWebAppUserDataDictionary.dd
+32672>>>>>>>        Function_Return dtTime
+32673>>>>>>>    End_Function
+32674>>>>>>>
+32674>>>>>>>End_Class
+32675>>>>>Use cWebAppUserDataDictionary.dd
 Including file: cWebAppUserDataDictionary.dd    (C:\Appl\DataFlex 20.0\Pkg\cWebAppUserDataDictionary.dd)
-32681>>>>>>>Use DataDict.pkg
-32681>>>>>>>Open WebAppUser
-32683>>>>>>>Open WebAppSession
+32675>>>>>>>Use DataDict.pkg
+32675>>>>>>>Open WebAppUser
+32677>>>>>>>Open WebAppSession
+32679>>>>>>>
+32679>>>>>>>Class cWebAppUserDataDictionary is a DataDictionary
+32680>>>>>>>    
+32680>>>>>>>    Procedure Construct_Object
+32682>>>>>>>        Forward Send Construct_Object
+32684>>>>>>>        Set Main_File to WebAppUser.File_Number
 32685>>>>>>>
-32685>>>>>>>Class cWebAppUserDataDictionary is a DataDictionary
-32686>>>>>>>    
-32686>>>>>>>    Procedure Construct_Object
-32688>>>>>>>        Forward Send Construct_Object
-32690>>>>>>>        Set Main_File to WebAppUser.File_Number
+32685>>>>>>>        Set Add_Client_File to WebAppSession.File_Number
+32686>>>>>>>
+32686>>>>>>>        Set Foreign_Field_Option DD_KEYFIELD DD_NOPUT to True
+32687>>>>>>>        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
+32688>>>>>>>        Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
+32689>>>>>>>        Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
+32690>>>>>>>    End_Procedure
 32691>>>>>>>
-32691>>>>>>>        Set Add_Client_File to WebAppSession.File_Number
-32692>>>>>>>
-32692>>>>>>>        Set Foreign_Field_Option DD_KEYFIELD DD_NOPUT to True
-32693>>>>>>>        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
-32694>>>>>>>        Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
-32695>>>>>>>        Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
-32696>>>>>>>    End_Procedure
-32697>>>>>>>
-32697>>>>>>>End_Class
-32698>>>>>
-32698>>>>>Class cWebSessionManagerStandard is a cWebSessionManager
-32699>>>>>    
-32699>>>>>    Procedure Construct_Object
-32701>>>>>        Handle hoUserDD hoSessionDD
-32701>>>>>        
-32701>>>>>        Forward Send Construct_Object
-32703>>>>>        
-32703>>>>>        Property Handle phoUserDD 0      // Handle to the WebAppUser DDO
-32704>>>>>        Property Handle phoSessionDD 0   // Handle to the WebAppSession DDO        
-32705>>>>>        
-32705>>>>>        Get Create (RefClass(cWebAppUserDataDictionary)) to hoUserDD
-32706>>>>>        Get Create (RefClass(cWebAppSessionDataDictionary)) to hoSessionDD
-32707>>>>>        Set DDO_Server of hoSessionDD to hoUserDD
-32708>>>>>
-32708>>>>>        Set phoUserDD to hoUserDD
-32709>>>>>        Set phoSessionDD to hoSessionDD
-32710>>>>>        Property Boolean pbCreatingNewSession False
-32711>>>>>        Property String psLoginName
-32712>>>>>        Property String psUserName ""
-32713>>>>>        Property Integer piUserRights 0
-32714>>>>>    End_Procedure
-32715>>>>>    
-32715>>>>>    Function CreateSession String sRemoteAddress Returns String
-32717>>>>>        String sSessionKey
-32717>>>>>        Integer iErr
-32717>>>>>        Boolean bLogWebSession
-32717>>>>>        Handle hoSessionDD       
-32717>>>>>        Get phoSessionDD to hoSessionDD
-32718>>>>>        
-32718>>>>>        //  Get session key
-32718>>>>>        Forward Get CreateSession sRemoteAddress to sSessionKey
-32720>>>>>        
-32720>>>>>        Get pbLogWebSession to bLogWebSession
-32721>>>>>        If not bLogWebSession Begin
-32723>>>>>            Function_Return sSessionKey        
-32724>>>>>        End
-32724>>>>>>
-32724>>>>>
-32724>>>>>        //  Store session
-32724>>>>>        Send Clear of hoSessionDD
-32725>>>>>        Set Field_Changed_Value of hoSessionDD Field WebAppSession.SessionKey to sSessionKey
-32726>>>>>        Set Field_Changed_Value of hoSessionDD Field WebAppSession.RemoteAddress to sRemoteAddress
-32727>>>>>        Set Field_Changed_Value of hoSessionDD Field WebAppSession.Active to "Y"
-32728>>>>>        Get Request_Validate of hoSessionDD to iErr
-32729>>>>>        If (iErr) Begin
-32731>>>>>            // this should not happen. If it does its a programming error
-32731>>>>>            Error DFERR_PROGRAM C_$WebAppSesionValidateFailed
-32732>>>>>>
-32732>>>>>            Function_Return ""
-32733>>>>>        End
-32733>>>>>>
-32733>>>>>        Send Request_Save of hoSessionDD
-32734>>>>>       
-32734>>>>>        Function_Return sSessionKey        
-32735>>>>>    End_Function
-32736>>>>>    
-32736>>>>>    
-32736>>>>>    Function ValidateSession String sSessionKey Boolean bOptLoadWebApp Returns Boolean
-32738>>>>>        DateTime dtLastAccess dtCurrent
-32738>>>>>        TimeSpan tsDiff
-32738>>>>>        Integer iErr iSessionTimeout iSpanMinutes
-32738>>>>>        Boolean bResult bCreatingNewSession
-32738>>>>>        Boolean bLogWebSession bLoadWebApp
-32738>>>>>        Integer eLoginMode
-32738>>>>>        String sTime
-32738>>>>>        Handle hoSessionDD hoUserDD       
+32691>>>>>>>End_Class
+32692>>>>>
+32692>>>>>Class cWebSessionManagerStandard is a cWebSessionManager
+32693>>>>>    
+32693>>>>>    Procedure Construct_Object
+32695>>>>>        Handle hoUserDD hoSessionDD
+32695>>>>>        
+32695>>>>>        Forward Send Construct_Object
+32697>>>>>        
+32697>>>>>        Property Handle phoUserDD 0      // Handle to the WebAppUser DDO
+32698>>>>>        Property Handle phoSessionDD 0   // Handle to the WebAppSession DDO        
+32699>>>>>        
+32699>>>>>        Get Create (RefClass(cWebAppUserDataDictionary)) to hoUserDD
+32700>>>>>        Get Create (RefClass(cWebAppSessionDataDictionary)) to hoSessionDD
+32701>>>>>        Set DDO_Server of hoSessionDD to hoUserDD
+32702>>>>>
+32702>>>>>        Set phoUserDD to hoUserDD
+32703>>>>>        Set phoSessionDD to hoSessionDD
+32704>>>>>        Property Boolean pbCreatingNewSession False
+32705>>>>>        Property String psLoginName
+32706>>>>>        Property String psUserName ""
+32707>>>>>        Property Integer piUserRights 0
+32708>>>>>    End_Procedure
+32709>>>>>    
+32709>>>>>    Function CreateSession String sRemoteAddress Returns String
+32711>>>>>        String sSessionKey
+32711>>>>>        Integer iErr
+32711>>>>>        Boolean bLogWebSession
+32711>>>>>        Handle hoSessionDD       
+32711>>>>>        Get phoSessionDD to hoSessionDD
+32712>>>>>        
+32712>>>>>        //  Get session key
+32712>>>>>        Forward Get CreateSession sRemoteAddress to sSessionKey
+32714>>>>>        
+32714>>>>>        Get pbLogWebSession to bLogWebSession
+32715>>>>>        If not bLogWebSession Begin
+32717>>>>>            Function_Return sSessionKey        
+32718>>>>>        End
+32718>>>>>>
+32718>>>>>
+32718>>>>>        //  Store session
+32718>>>>>        Send Clear of hoSessionDD
+32719>>>>>        Set Field_Changed_Value of hoSessionDD Field WebAppSession.SessionKey to sSessionKey
+32720>>>>>        Set Field_Changed_Value of hoSessionDD Field WebAppSession.RemoteAddress to sRemoteAddress
+32721>>>>>        Set Field_Changed_Value of hoSessionDD Field WebAppSession.Active to "Y"
+32722>>>>>        Get Request_Validate of hoSessionDD to iErr
+32723>>>>>        If (iErr) Begin
+32725>>>>>            // this should not happen. If it does its a programming error
+32725>>>>>            Error DFERR_PROGRAM C_$WebAppSesionValidateFailed
+32726>>>>>>
+32726>>>>>            Function_Return ""
+32727>>>>>        End
+32727>>>>>>
+32727>>>>>        Send Request_Save of hoSessionDD
+32728>>>>>       
+32728>>>>>        Function_Return sSessionKey        
+32729>>>>>    End_Function
+32730>>>>>    
+32730>>>>>    
+32730>>>>>    Function ValidateSession String sSessionKey Boolean bOptLoadWebApp Returns Boolean
+32732>>>>>        DateTime dtLastAccess dtCurrent
+32732>>>>>        TimeSpan tsDiff
+32732>>>>>        Integer iErr iSessionTimeout iSpanMinutes
+32732>>>>>        Boolean bResult bCreatingNewSession
+32732>>>>>        Boolean bLogWebSession bLoadWebApp
+32732>>>>>        Integer eLoginMode
+32732>>>>>        String sTime
+32732>>>>>        Handle hoSessionDD hoUserDD       
+32732>>>>>        
+32732>>>>>        Move False to bLoadWebApp
+32733>>>>>        If (num_arguments >= 2) Begin
+32735>>>>>            Move bOptLoadWebApp to bLoadWebApp
+32736>>>>>        End
+32736>>>>>>
+32736>>>>>        
+32736>>>>>        Get phoSessionDD to hoSessionDD
+32737>>>>>        Get phoUserDD to hoUserDD
 32738>>>>>        
-32738>>>>>        Move False to bLoadWebApp
-32739>>>>>        If (num_arguments >= 2) Begin
-32741>>>>>            Move bOptLoadWebApp to bLoadWebApp
-32742>>>>>        End
-32742>>>>>>
-32742>>>>>        
-32742>>>>>        Get phoSessionDD to hoSessionDD
-32743>>>>>        Get phoUserDD to hoUserDD
-32744>>>>>        
-32744>>>>>        Get pbLogWebSession to bLogWebSession
-32745>>>>>        Get peLoginMode to eLoginMode
+32738>>>>>        Get pbLogWebSession to bLogWebSession
+32739>>>>>        Get peLoginMode to eLoginMode
+32740>>>>>        
+32740>>>>>        // for this object, you can only disable logging if login completely is disabled
+32740>>>>>        If (not(bLogWebSession) and (eLoginMode<>lmLoginNone)) Begin
+32742>>>>>            Error DFERR_PROGRAM C_$WebSessionLoggingMustBeEnabled
+32743>>>>>>
+32743>>>>>            Function_Return False
+32744>>>>>        End
+32744>>>>>>
+32744>>>>>
+32744>>>>>        //  Clear session properties
+32744>>>>>        Set psSessionKey to ""
+32745>>>>>        Send UpdateSessionProperties True
 32746>>>>>        
-32746>>>>>        // for this object, you can only disable logging if login completely is disabled
-32746>>>>>        If (not(bLogWebSession) and (eLoginMode<>lmLoginNone)) Begin
-32748>>>>>            Error DFERR_PROGRAM C_$WebSessionLoggingMustBeEnabled
-32749>>>>>>
-32749>>>>>            Function_Return False
-32750>>>>>        End
-32750>>>>>>
-32750>>>>>
-32750>>>>>        //  Clear session properties
-32750>>>>>        Set psSessionKey to ""
-32751>>>>>        Send UpdateSessionProperties True
-32752>>>>>        
-32752>>>>>        If not bLogWebSession Begin
-32754>>>>>            Forward Get ValidateSession sSessionKey to bResult
-32756>>>>>            Function_Return bResult
-32757>>>>>        End        
-32757>>>>>>
-32757>>>>>        
-32757>>>>>        Move False to bResult
-32758>>>>>        Get piSessionTimeout to iSessionTimeout 
-32759>>>>>        
-32759>>>>>        //  Check if session exists
-32759>>>>>        Send Clear of hoSessionDD
-32760>>>>>        Move sSessionKey to WebAppSession.SessionKey
-32761>>>>>        Send Find of hoSessionDD EQ Index.1
-32762>>>>>            
-32762>>>>>        If (Found) Begin
-32764>>>>>            //  Calculate timespan between now and last access time
-32764>>>>>            Move (CurrentDateTime()) to dtCurrent
-32765>>>>>            Move WebAppSession.LastAccessDate to dtLastAccess
-32766>>>>>            Get StringToTime of hoSessionDD dtLastAccess WebAppSession.LastAccessTime to dtLastAccess
-32767>>>>>            Move (dtCurrent - dtLastAccess) to tsDiff
-32768>>>>>            Move (SpanTotalMinutes(tsDiff)) to iSpanMinutes
-32769>>>>>            
-32769>>>>>            //  Check if session didn't time out
-32769>>>>>            If (IsDateValid(dtLastAccess) and (iSessionTimeout <= 0 or (iSpanMinutes < iSessionTimeout)) and WebAppSession.Active = "Y") Begin
-32771>>>>>                Forward Get ValidateSession sSessionKey to bResult
-32773>>>>>                   
-32773>>>>>                If (bResult) Begin
-32775>>>>>                    //  Update session record
-32775>>>>>                    Get TimeToString of hoSessionDD dtCurrent to sTime 
-32776>>>>>                    Set Field_Changed_Value of hoSessionDD Field WebAppSession.LastAccessDate to dtCurrent
-32777>>>>>                    Set Field_Changed_Value of hoSessionDD Field WebAppSession.LastAccessTime to sTime
-32778>>>>>                    Set Field_Changed_Value of hoSessionDD Field WebAppSession.UseCount to (WebAppSession.UseCount + 1)
-32779>>>>>                    Get Request_Validate of hoSessionDD to iErr
-32780>>>>>                    If (iErr) Begin
-32782>>>>>                        // this should not happen. If it does its a programming error
-32782>>>>>                        Error DFERR_PROGRAM C_$WebAppSesionValidateFailed
-32783>>>>>>
-32783>>>>>                        Function_Return False
-32784>>>>>                    End
-32784>>>>>>
-32784>>>>>                    Send Request_Save of hoSessionDD
-32785>>>>>                    
-32785>>>>>                    //  Update user properties
-32785>>>>>                    Send UpdateSessionProperties False
-32786>>>>>                End
-32786>>>>>>
-32786>>>>>            End
-32786>>>>>>
-32786>>>>>            Else Begin
-32787>>>>>                // Test the Creating New Session Flag to protect against infinite recursion....
-32787>>>>>                Get pbCreatingNewSession to bCreatingNewSession
-32788>>>>>                
-32788>>>>>                If (not(bCreatingNewSession)) Begin
-32790>>>>>                    Set pbCreatingNewSession to True                    
-32791>>>>>                    Get RecreateSession of ghoWebApp to bResult
-32792>>>>>                    Set pbCreatingNewSession to False
-32793>>>>>                    
-32793>>>>>                    If (not(bLoadWebApp)) Begin
-32795>>>>>                        Move False to bResult   //  We can only continue immediately if we were loading the webapp, other operations are not allowed!
-32796>>>>>                        Error DFERR_WEBAPP_SESSION_TIMEOUT "Your application session has timed out or is inactive, please login again."
-32797>>>>>>
-32797>>>>>                        Send NavigateRefresh of ghoWebApp          // refresh the WebApp at the client (triggers a login)
-32798>>>>>                    End
-32798>>>>>>
-32798>>>>>                End
-32798>>>>>>
-32798>>>>>            End
-32798>>>>>>
-32798>>>>>        End
-32798>>>>>>
-32798>>>>>        Else Begin
-32799>>>>>            Error DFERR_WEBAPP_BAD_SESSION_KEY "Session key not known (reload page to recreate session)"
-32800>>>>>>
-32800>>>>>        End
-32800>>>>>>
+32746>>>>>        If not bLogWebSession Begin
+32748>>>>>            Forward Get ValidateSession sSessionKey to bResult
+32750>>>>>            Function_Return bResult
+32751>>>>>        End        
+32751>>>>>>
+32751>>>>>        
+32751>>>>>        Move False to bResult
+32752>>>>>        Get piSessionTimeout to iSessionTimeout 
+32753>>>>>        
+32753>>>>>        //  Check if session exists
+32753>>>>>        Send Clear of hoSessionDD
+32754>>>>>        Move sSessionKey to WebAppSession.SessionKey
+32755>>>>>        Send Find of hoSessionDD EQ Index.1
+32756>>>>>            
+32756>>>>>        If (Found) Begin
+32758>>>>>            //  Calculate timespan between now and last access time
+32758>>>>>            Move (CurrentDateTime()) to dtCurrent
+32759>>>>>            Move WebAppSession.LastAccessDate to dtLastAccess
+32760>>>>>            Get StringToTime of hoSessionDD dtLastAccess WebAppSession.LastAccessTime to dtLastAccess
+32761>>>>>            Move (dtCurrent - dtLastAccess) to tsDiff
+32762>>>>>            Move (SpanTotalMinutes(tsDiff)) to iSpanMinutes
+32763>>>>>            
+32763>>>>>            //  Check if session didn't time out
+32763>>>>>            If (IsDateValid(dtLastAccess) and (iSessionTimeout <= 0 or (iSpanMinutes < iSessionTimeout)) and WebAppSession.Active = "Y") Begin
+32765>>>>>                Forward Get ValidateSession sSessionKey to bResult
+32767>>>>>                   
+32767>>>>>                If (bResult) Begin
+32769>>>>>                    //  Update session record
+32769>>>>>                    Get TimeToString of hoSessionDD dtCurrent to sTime 
+32770>>>>>                    Set Field_Changed_Value of hoSessionDD Field WebAppSession.LastAccessDate to dtCurrent
+32771>>>>>                    Set Field_Changed_Value of hoSessionDD Field WebAppSession.LastAccessTime to sTime
+32772>>>>>                    Set Field_Changed_Value of hoSessionDD Field WebAppSession.UseCount to (WebAppSession.UseCount + 1)
+32773>>>>>                    Get Request_Validate of hoSessionDD to iErr
+32774>>>>>                    If (iErr) Begin
+32776>>>>>                        // this should not happen. If it does its a programming error
+32776>>>>>                        Error DFERR_PROGRAM C_$WebAppSesionValidateFailed
+32777>>>>>>
+32777>>>>>                        Function_Return False
+32778>>>>>                    End
+32778>>>>>>
+32778>>>>>                    Send Request_Save of hoSessionDD
+32779>>>>>                    
+32779>>>>>                    //  Update user properties
+32779>>>>>                    Send UpdateSessionProperties False
+32780>>>>>                End
+32780>>>>>>
+32780>>>>>            End
+32780>>>>>>
+32780>>>>>            Else Begin
+32781>>>>>                // Test the Creating New Session Flag to protect against infinite recursion....
+32781>>>>>                Get pbCreatingNewSession to bCreatingNewSession
+32782>>>>>                
+32782>>>>>                If (not(bCreatingNewSession)) Begin
+32784>>>>>                    Set pbCreatingNewSession to True                    
+32785>>>>>                    Get RecreateSession of ghoWebApp to bResult
+32786>>>>>                    Set pbCreatingNewSession to False
+32787>>>>>                    
+32787>>>>>                    If (not(bLoadWebApp)) Begin
+32789>>>>>                        Move False to bResult   //  We can only continue immediately if we were loading the webapp, other operations are not allowed!
+32790>>>>>                        Error DFERR_WEBAPP_SESSION_TIMEOUT "Your application session has timed out or is inactive, please login again."
+32791>>>>>>
+32791>>>>>                        Send NavigateRefresh of ghoWebApp          // refresh the WebApp at the client (triggers a login)
+32792>>>>>                    End
+32792>>>>>>
+32792>>>>>                End
+32792>>>>>>
+32792>>>>>            End
+32792>>>>>>
+32792>>>>>        End
+32792>>>>>>
+32792>>>>>        Else Begin
+32793>>>>>            Error DFERR_WEBAPP_BAD_SESSION_KEY "Session key not known (reload page to recreate session)"
+32794>>>>>>
+32794>>>>>        End
+32794>>>>>>
+32794>>>>>        
+32794>>>>>        Function_Return bResult
+32795>>>>>    End_Function
+32796>>>>>    
+32796>>>>>    Function UserLogin String sLoginName String sPassword Returns Boolean
+32798>>>>>        String sSessionKey sUserPassword
+32798>>>>>        Handle hoSessionDD hoUserDD
+32798>>>>>        Boolean bMatch  
+32798>>>>>        
+32798>>>>>        Get phoSessionDD to hoSessionDD
+32799>>>>>        Get phoUserDD to hoUserDD
+32800>>>>>        Integer iErr eLoginMode
 32800>>>>>        
-32800>>>>>        Function_Return bResult
-32801>>>>>    End_Function
-32802>>>>>    
-32802>>>>>    Function UserLogin String sLoginName String sPassword Returns Boolean
-32804>>>>>        String sSessionKey sUserPassword
-32804>>>>>        Handle hoSessionDD hoUserDD
-32804>>>>>        Boolean bMatch  
+32800>>>>>        // Refind session record
+32800>>>>>        Get psSessionKey to sSessionKey
+32801>>>>>        Send Clear of hoSessionDD
+32802>>>>>        Move sSessionKey to WebAppSession.SessionKey
+32803>>>>>        Send Find of hoSessionDD EQ Index.1
 32804>>>>>        
-32804>>>>>        Get phoSessionDD to hoSessionDD
-32805>>>>>        Get phoUserDD to hoUserDD
-32806>>>>>        Integer iErr eLoginMode
-32806>>>>>        
-32806>>>>>        // Refind session record
-32806>>>>>        Get psSessionKey to sSessionKey
-32807>>>>>        Send Clear of hoSessionDD
-32808>>>>>        Move sSessionKey to WebAppSession.SessionKey
-32809>>>>>        Send Find of hoSessionDD EQ Index.1
-32810>>>>>        
-32810>>>>>        If (Found and WebAppSession.SessionKey = sSessionKey) Begin
-32812>>>>>            Get peLoginMode to eLoginMode
-32813>>>>>            
-32813>>>>>            //  Find the user
-32813>>>>>            Move sLoginName to WebAppUser.LoginName
-32814>>>>>            Send Find of hoUserDD EQ Index.1
-32815>>>>>            
-32815>>>>>            // Check username and password
-32815>>>>>            If (Found and (Lowercase(sLoginName) = Lowercase(Trim(WebAppUser.LoginName)))) Begin
-32817>>>>>                Get Field_Current_Value of hoUserDD Field WebAppUser.Password to sUserPassword
-32818>>>>>                Get ComparePasswords (Trim(sUserPassword)) (Trim(sPassword)) to bMatch
-32819>>>>>                
-32819>>>>>                If (bMatch) Begin
-32821>>>>>                    // Store the login
-32821>>>>>                    Set Field_Changed_Value of hoUserDD Field WebAppUser.LastLogin to (CurrentDateTime())
-32822>>>>>                    Get Request_Validate of hoSessionDD to iErr
-32823>>>>>                    If (iErr) Begin
-32825>>>>>                        // this should not happen. If it does its a programming error
-32825>>>>>                        Error DFERR_PROGRAM C_$WebAppSesionValidateFailed
-32826>>>>>>
-32826>>>>>                        Function_Return False
-32827>>>>>                    End
+32804>>>>>        If (Found and WebAppSession.SessionKey = sSessionKey) Begin
+32806>>>>>            Get peLoginMode to eLoginMode
+32807>>>>>            
+32807>>>>>            //  Find the user
+32807>>>>>            Move sLoginName to WebAppUser.LoginName
+32808>>>>>            Send Find of hoUserDD EQ Index.1
+32809>>>>>            
+32809>>>>>            // Check username and password
+32809>>>>>            If (Found and (Lowercase(sLoginName) = Lowercase(Trim(WebAppUser.LoginName)))) Begin
+32811>>>>>                Get Field_Current_Value of hoUserDD Field WebAppUser.Password to sUserPassword
+32812>>>>>                Get ComparePasswords (Trim(sUserPassword)) (Trim(sPassword)) to bMatch
+32813>>>>>                
+32813>>>>>                If (bMatch) Begin
+32815>>>>>                    // Store the login
+32815>>>>>                    Set Field_Changed_Value of hoUserDD Field WebAppUser.LastLogin to (CurrentDateTime())
+32816>>>>>                    Get Request_Validate of hoSessionDD to iErr
+32817>>>>>                    If (iErr) Begin
+32819>>>>>                        // this should not happen. If it does its a programming error
+32819>>>>>                        Error DFERR_PROGRAM C_$WebAppSesionValidateFailed
+32820>>>>>>
+32820>>>>>                        Function_Return False
+32821>>>>>                    End
+32821>>>>>>
+32821>>>>>                    
+32821>>>>>                    Send Request_Save of hoSessionDD
+32822>>>>>                    
+32822>>>>>                    // Update session properties
+32822>>>>>                    Send UpdateSessionProperties False
+32823>>>>>                    Send NotifyChangeRights
+32824>>>>>                    Function_Return True
+32825>>>>>                End
+32825>>>>>>
+32825>>>>>                Else Begin
+32826>>>>>                    //  We should rely directly on this buffer elsewhere but just be sure
+32826>>>>>                    Send Clear of hoUserDD
+32827>>>>>                End
 32827>>>>>>
-32827>>>>>                    
-32827>>>>>                    Send Request_Save of hoSessionDD
-32828>>>>>                    
-32828>>>>>                    // Update session properties
-32828>>>>>                    Send UpdateSessionProperties False
-32829>>>>>                    Send NotifyChangeRights
-32830>>>>>                    Function_Return True
-32831>>>>>                End
-32831>>>>>>
-32831>>>>>                Else Begin
-32832>>>>>                    //  We should rely directly on this buffer elsewhere but just be sure
-32832>>>>>                    Send Clear of hoUserDD
-32833>>>>>                End
-32833>>>>>>
-32833>>>>>            End
-32833>>>>>>
-32833>>>>>        End
-32833>>>>>>
-32833>>>>>          
-32833>>>>>        Function_Return False
-32834>>>>>    End_Function
-32835>>>>>    
-32835>>>>>    Function IsLoggedIn Returns Boolean
-32837>>>>>        String sLoginName
-32837>>>>>        Boolean bLogWebSession bLoggedIn
+32827>>>>>            End
+32827>>>>>>
+32827>>>>>        End
+32827>>>>>>
+32827>>>>>          
+32827>>>>>        Function_Return False
+32828>>>>>    End_Function
+32829>>>>>    
+32829>>>>>    Function IsLoggedIn Returns Boolean
+32831>>>>>        String sLoginName
+32831>>>>>        Boolean bLogWebSession bLoggedIn
+32831>>>>>        
+32831>>>>>        Get pbLogWebSession to bLogWebSession
+32832>>>>>        If not bLogWebSession Begin
+32834>>>>>            Forward Get IsLoggedIn to bLoggedIn
+32836>>>>>            Function_Return bLoggedIn
+32837>>>>>        End
+32837>>>>>>
 32837>>>>>        
-32837>>>>>        Get pbLogWebSession to bLogWebSession
-32838>>>>>        If not bLogWebSession Begin
-32840>>>>>            Forward Get IsLoggedIn to bLoggedIn
-32842>>>>>            Function_Return bLoggedIn
-32843>>>>>        End
-32843>>>>>>
+32837>>>>>        Get psLoginName to sLoginName
+32838>>>>>        
+32838>>>>>        Function_Return (sLoginName <> "")
+32839>>>>>    End_Function
+32840>>>>>    
+32840>>>>>    
+32840>>>>>    //
+32840>>>>>    // This procedure is called when validating a session and after logging in. Its purpose is to 
+32840>>>>>    // update properties based on the session and user data. Augment this function to update 
+32840>>>>>    // properties based on the session / user table. Note that WebAppUser and WebAppSession contain
+32840>>>>>    // the right records when this procedure is called.
+32840>>>>>    //
+32840>>>>>    // Params:
+32840>>>>>    //      bClear   True if the procedure is called before session validation to clear properties.
+32840>>>>>    //
+32840>>>>>    Procedure UpdateSessionProperties Boolean bClear
+32842>>>>>        Handle hoUserDD
+32842>>>>>        
+32842>>>>>        Get phoUserDD to hoUserDD
 32843>>>>>        
-32843>>>>>        Get psLoginName to sLoginName
-32844>>>>>        
-32844>>>>>        Function_Return (sLoginName <> "")
-32845>>>>>    End_Function
-32846>>>>>    
-32846>>>>>    
-32846>>>>>    //
-32846>>>>>    // This procedure is called when validating a session and after logging in. Its purpose is to 
-32846>>>>>    // update properties based on the session and user data. Augment this function to update 
-32846>>>>>    // properties based on the session / user table. Note that WebAppUser and WebAppSession contain
-32846>>>>>    // the right records when this procedure is called.
-32846>>>>>    //
-32846>>>>>    // Params:
-32846>>>>>    //      bClear   True if the procedure is called before session validation to clear properties.
-32846>>>>>    //
-32846>>>>>    Procedure UpdateSessionProperties Boolean bClear
-32848>>>>>        Handle hoUserDD
-32848>>>>>        
-32848>>>>>        Get phoUserDD to hoUserDD
-32849>>>>>        
-32849>>>>>        //  Update user properties
-32849>>>>>        If (not(bClear) and HasRecord(hoUserDD)) Begin
-32851>>>>>            Set psUsername to (Trim(WebAppUser.FullName))
-32852>>>>>            Set psLoginName to (Trim(WebAppUser.LoginName))
-32853>>>>>            Set piUserRights to WebAppUser.Rights
-32854>>>>>            
-32854>>>>>            Send OnSessionPropertiesSet 
-32855>>>>>        End
-32855>>>>>>
-32855>>>>>        Else Begin
-32856>>>>>            Set psUsername to ""
-32857>>>>>            Set psLoginName to ""
-32858>>>>>            Set piUserRights to 0
-32859>>>>>            
-32859>>>>>            Send OnSessionPropertiesClear
-32860>>>>>        End
-32860>>>>>>
-32860>>>>>    End_Procedure
-32861>>>>>    
-32861>>>>>    //
-32861>>>>>    // This function is called to perform the password comparison. It gets the entered password and
-32861>>>>>    // the password value of the user table as parameters. The WebAppUser buffer will contain the
-32861>>>>>    // right record. This function can be augmented to implement security features like storing the
-32861>>>>>    // password as a hashed value.
-32861>>>>>    //
-32861>>>>>    // Params:
-32861>>>>>    //      sUserPassword       Value of the WebAppUser.Password field.
-32861>>>>>    //      sEnteredPassword    Value entered on the login screen during login.
-32861>>>>>    //
-32861>>>>>    Function ComparePasswords String sUserPassword String sEnteredPassword Returns Boolean
-32863>>>>>        Function_Return (sUserPassword = sEnteredPassword)
-32864>>>>>    End_Function
+32843>>>>>        //  Update user properties
+32843>>>>>        If (not(bClear) and HasRecord(hoUserDD)) Begin
+32845>>>>>            Set psUsername to (Trim(WebAppUser.FullName))
+32846>>>>>            Set psLoginName to (Trim(WebAppUser.LoginName))
+32847>>>>>            Set piUserRights to WebAppUser.Rights
+32848>>>>>            
+32848>>>>>            Send OnSessionPropertiesSet 
+32849>>>>>        End
+32849>>>>>>
+32849>>>>>        Else Begin
+32850>>>>>            Set psUsername to ""
+32851>>>>>            Set psLoginName to ""
+32852>>>>>            Set piUserRights to 0
+32853>>>>>            
+32853>>>>>            Send OnSessionPropertiesClear
+32854>>>>>        End
+32854>>>>>>
+32854>>>>>    End_Procedure
+32855>>>>>    
+32855>>>>>    //
+32855>>>>>    // This function is called to perform the password comparison. It gets the entered password and
+32855>>>>>    // the password value of the user table as parameters. The WebAppUser buffer will contain the
+32855>>>>>    // right record. This function can be augmented to implement security features like storing the
+32855>>>>>    // password as a hashed value.
+32855>>>>>    //
+32855>>>>>    // Params:
+32855>>>>>    //      sUserPassword       Value of the WebAppUser.Password field.
+32855>>>>>    //      sEnteredPassword    Value entered on the login screen during login.
+32855>>>>>    //
+32855>>>>>    Function ComparePasswords String sUserPassword String sEnteredPassword Returns Boolean
+32857>>>>>        Function_Return (sUserPassword = sEnteredPassword)
+32858>>>>>    End_Function
+32859>>>>>    
+32859>>>>>    Procedure OnSessionPropertiesSet
+32861>>>>>        //  Empty event stub
+32861>>>>>    End_Procedure
+32862>>>>>    
+32862>>>>>    Procedure OnSessionPropertiesClear
+32864>>>>>        //  Empty event stub
+32864>>>>>    End_Procedure
 32865>>>>>    
-32865>>>>>    Procedure OnSessionPropertiesSet
-32867>>>>>        //  Empty event stub
-32867>>>>>    End_Procedure
-32868>>>>>    
-32868>>>>>    Procedure OnSessionPropertiesClear
-32870>>>>>        //  Empty event stub
-32870>>>>>    End_Procedure
-32871>>>>>    
-32871>>>>>    Procedure EndSession
-32873>>>>>        Integer iErr
-32873>>>>>        Boolean bLogWebSession
-32873>>>>>        Handle hoSessionDD       
-32873>>>>>        
-32873>>>>>        Get phoSessionDD to hoSessionDD
-32874>>>>>        Get pbLogWebSession to bLogWebSession
-32875>>>>>        If not bLogWebSession Begin
-32877>>>>>            Forward Send EndSession
-32879>>>>>            Procedure_Return
-32880>>>>>        End
-32880>>>>>>
-32880>>>>>            
-32880>>>>>        //  Check if session exists
-32880>>>>>        Send Clear of hoSessionDD
-32881>>>>>        Get psSessionKey to WebAppSession.SessionKey
-32882>>>>>        
-32882>>>>>        Send Find of hoSessionDD EQ Index.1
-32883>>>>>        If (Found) Begin
-32885>>>>>            Set Field_Changed_Value of hoSessionDD Field WebAppSession.Active to "N"
-32886>>>>>            Get Request_Validate of hoSessionDD to iErr
-32887>>>>>            If (iErr) Begin
-32889>>>>>                // this should not happen. If it does its a programming error
-32889>>>>>                Error DFERR_PROGRAM C_$WebAppSesionValidateFailed
-32890>>>>>>
-32890>>>>>                Procedure_Return
-32891>>>>>            End
-32891>>>>>>
-32891>>>>>            Send Request_Save of hoSessionDD
-32892>>>>>        End
-32892>>>>>>
-32892>>>>>    End_Procedure
-32893>>>>>
-32893>>>>>End_Class
-32894>>>>>
-32894>>>
-32894>>>Object oSessionManager is a cWebSessionManagerStandard
-32896>>>End_Object
-32897>>>
-32897>>>
-32897>    Use Login.wo
+32865>>>>>    Procedure EndSession
+32867>>>>>        Integer iErr
+32867>>>>>        Boolean bLogWebSession
+32867>>>>>        Handle hoSessionDD       
+32867>>>>>        
+32867>>>>>        Get phoSessionDD to hoSessionDD
+32868>>>>>        Get pbLogWebSession to bLogWebSession
+32869>>>>>        If not bLogWebSession Begin
+32871>>>>>            Forward Send EndSession
+32873>>>>>            Procedure_Return
+32874>>>>>        End
+32874>>>>>>
+32874>>>>>            
+32874>>>>>        //  Check if session exists
+32874>>>>>        Send Clear of hoSessionDD
+32875>>>>>        Get psSessionKey to WebAppSession.SessionKey
+32876>>>>>        
+32876>>>>>        Send Find of hoSessionDD EQ Index.1
+32877>>>>>        If (Found) Begin
+32879>>>>>            Set Field_Changed_Value of hoSessionDD Field WebAppSession.Active to "N"
+32880>>>>>            Get Request_Validate of hoSessionDD to iErr
+32881>>>>>            If (iErr) Begin
+32883>>>>>                // this should not happen. If it does its a programming error
+32883>>>>>                Error DFERR_PROGRAM C_$WebAppSesionValidateFailed
+32884>>>>>>
+32884>>>>>                Procedure_Return
+32885>>>>>            End
+32885>>>>>>
+32885>>>>>            Send Request_Save of hoSessionDD
+32886>>>>>        End
+32886>>>>>>
+32886>>>>>    End_Procedure
+32887>>>>>
+32887>>>>>End_Class
+32888>>>>>
+32888>>>
+32888>>>Object oSessionManager is a cWebSessionManagerStandard
+32890>>>End_Object
+32891>>>
+32891>>>
+32891>    Use Login.wo
 Including file: Login.wo    (E:\repositories\JenkinsDemo\AppSrc\Login.wo)
-32897>>>Use cWebView.pkg
-32897>>>Use cWebForm.pkg
-32897>>>Use cWebButton.pkg
-32897>>>Use cWebPanel.pkg
-32897>>>Use cWebLabel.pkg
-32897>>>Use cWebSpacer.pkg
-32897>>>Use cWebImage.pkg
-32897>>>
-32897>>>Object oLogin is a cWebView
-32899>>>    Set piMinWidth to 250
-32900>>>    Set piMaxWidth to 420
-32901>>>    Set pbLoginModeEnforced to False
-32902>>>    Set piColumnCount to 12
-32903>>>    Set psCSSClass to "LoginView"
-32904>>>    Set pbServerOnSubmit to True
+32891>>>Use cWebView.pkg
+32891>>>Use cWebForm.pkg
+32891>>>Use cWebButton.pkg
+32891>>>Use cWebPanel.pkg
+32891>>>Use cWebLabel.pkg
+32891>>>Use cWebSpacer.pkg
+32891>>>Use cWebImage.pkg
+32891>>>
+32891>>>Object oLogin is a cWebView
+32893>>>    Set piMinWidth to 250
+32894>>>    Set piMaxWidth to 420
+32895>>>    Set pbLoginModeEnforced to False
+32896>>>    Set piColumnCount to 12
+32897>>>    Set psCSSClass to "LoginView"
+32898>>>    Set pbServerOnSubmit to True
+32899>>>    
+32899>>>    Set psStateViewName to "Login"
+32900>>>    Set pbStateReplace to True  // Always replace the state so the login never becomes its own history item
+32901>>>    
+32901>>>    Property String psPrevStateHash ""  // Remember the state hash that the user navigated too so we can redirect after login
 32905>>>    
-32905>>>    Set psStateViewName to "Login"
-32906>>>    Set pbStateReplace to True  // Always replace the state so the login never becomes its own history item
+32905>>>    Delegate Set phoLoginView to Self
 32907>>>    
-32907>>>    Property String psPrevStateHash ""  // Remember the state hash that the user navigated too so we can redirect after login
-32911>>>    
-32911>>>    Delegate Set phoLoginView to Self
-32913>>>    
-32913>>>    Object oTopSpacer is a cWebSpacer
-32915>>>        Set pbFillHeight to True
-32916>>>        Set piColumnSpan to 12
-32917>>>    End_Object
-32918>>>    
-32918>>>    Object oWarning is a cWebLabel
-32920>>>        Set pbVisible to False
-32921>>>        Set psCaption to "Invalid User ID or password. \n\rHint: 'Guest' & 'guest'."
-32922>>>        Set peAlign to alignCenter
-32923>>>        Set piColumnSpan to 12
-32924>>>        Set psCSSClass to "LoginWarning"
-32925>>>    End_Object
-32926>>>    
-32926>>>    Object oLogo is a cWebImage
-32928>>>        Set piColumnSpan to 10
-32929>>>        Set psUrl to "images/DF_Logo_Retina.png"
-32930>>>        Set pePosition to wiFit
-32931>>>        Set piColumnIndex to 1
-32932>>>        Set piHeight to 160
-32933>>>        
-32933>>>        WebSetResponsive piHeight rmMobile to 100  // Best for small smart phones
-32934>>>    End_Object
-32935>>>    
-32935>>>    Object oLoginName is a cWebForm
-32937>>>        Set psLabel to "User ID:"
-32938>>>        Set peLabelPosition to lpTop
-32939>>>        Set piMaxLength to 20
-32940>>>        Set piColumnIndex to 1
-32941>>>        Set pbShowLabel to False
-32942>>>        Set psPlaceHolder to "loginname"
-32943>>>        Set piColumnSpan to 10
-32944>>>        Set psAutoComplete to "username"
-32945>>>    End_Object
-32946>>>    
-32946>>>    Object oPassword is a cWebForm
-32948>>>        Set psLabel to "Password:"
-32949>>>        Set pbPassword to True
-32950>>>        Set peLabelAlign to alignLeft
-32951>>>        Set piMaxLength to 20
-32952>>>        Set peLabelPosition to lpTop
-32953>>>        Set pbShowLabel to False
-32954>>>        Set psPlaceHolder to "password"
-32955>>>        Set piColumnSpan to 10
-32956>>>        Set piColumnIndex to 1
-32957>>>        Set psAutoComplete to "current-password"
-32958>>>    End_Object
-32959>>>    
-32959>>>    Object oWebSpacer1 is a cWebSpacer
-32961>>>        Set piColumnSpan to 12
-32962>>>        Set piHeight to 10
-32963>>>    End_Object
-32964>>>    
-32964>>>    Object oLoginButton is a cWebButton
-32966>>>        Set pbShowLabel to False
-32967>>>        Set psCaption to "sign in"
-32968>>>        Set pbServerOnClick to True
-32969>>>        Set piColumnSpan to 10
-32970>>>        Set piColumnIndex to 1
-32971>>>        
-32971>>>        Procedure OnClick
-32974>>>            Send DoLogin
-32975>>>        End_Procedure
-32976>>>    End_Object
-32977>>>    
-32977>>>    Object oBottomSpacer is a cWebSpacer
-32979>>>        Set pbFillHeight to True
-32980>>>        Set piColumnSpan to 12
-32981>>>    End_Object
-32982>>>    
-32982>>>    Procedure DoLogin
-32985>>>        String sLoginName sPassword sPrevStateHash
-32985>>>        Boolean bResult
+32907>>>    Object oTopSpacer is a cWebSpacer
+32909>>>        Set pbFillHeight to True
+32910>>>        Set piColumnSpan to 12
+32911>>>    End_Object
+32912>>>    
+32912>>>    Object oWarning is a cWebLabel
+32914>>>        Set pbVisible to False
+32915>>>        Set psCaption to "Invalid User ID or password. \n\rHint: 'Guest' & 'guest'."
+32916>>>        Set peAlign to alignCenter
+32917>>>        Set piColumnSpan to 12
+32918>>>        Set psCSSClass to "LoginWarning"
+32919>>>    End_Object
+32920>>>    
+32920>>>    Object oLogo is a cWebImage
+32922>>>        Set piColumnSpan to 10
+32923>>>        Set psUrl to "images/DF_Logo_Retina.png"
+32924>>>        Set pePosition to wiFit
+32925>>>        Set piColumnIndex to 1
+32926>>>        Set piHeight to 160
+32927>>>        
+32927>>>        WebSetResponsive piHeight rmMobile to 100  // Best for small smart phones
+32928>>>    End_Object
+32929>>>    
+32929>>>    Object oLoginName is a cWebForm
+32931>>>        Set psLabel to "User ID:"
+32932>>>        Set peLabelPosition to lpTop
+32933>>>        Set piMaxLength to 20
+32934>>>        Set piColumnIndex to 1
+32935>>>        Set pbShowLabel to False
+32936>>>        Set psPlaceHolder to "loginname"
+32937>>>        Set piColumnSpan to 10
+32938>>>        Set psAutoComplete to "username"
+32939>>>    End_Object
+32940>>>    
+32940>>>    Object oPassword is a cWebForm
+32942>>>        Set psLabel to "Password:"
+32943>>>        Set pbPassword to True
+32944>>>        Set peLabelAlign to alignLeft
+32945>>>        Set piMaxLength to 20
+32946>>>        Set peLabelPosition to lpTop
+32947>>>        Set pbShowLabel to False
+32948>>>        Set psPlaceHolder to "password"
+32949>>>        Set piColumnSpan to 10
+32950>>>        Set piColumnIndex to 1
+32951>>>        Set psAutoComplete to "current-password"
+32952>>>    End_Object
+32953>>>    
+32953>>>    Object oWebSpacer1 is a cWebSpacer
+32955>>>        Set piColumnSpan to 12
+32956>>>        Set piHeight to 10
+32957>>>    End_Object
+32958>>>    
+32958>>>    Object oLoginButton is a cWebButton
+32960>>>        Set pbShowLabel to False
+32961>>>        Set psCaption to "sign in"
+32962>>>        Set pbServerOnClick to True
+32963>>>        Set piColumnSpan to 10
+32964>>>        Set piColumnIndex to 1
+32965>>>        
+32965>>>        Procedure OnClick
+32968>>>            Send DoLogin
+32969>>>        End_Procedure
+32970>>>    End_Object
+32971>>>    
+32971>>>    Object oBottomSpacer is a cWebSpacer
+32973>>>        Set pbFillHeight to True
+32974>>>        Set piColumnSpan to 12
+32975>>>    End_Object
+32976>>>    
+32976>>>    Procedure DoLogin
+32979>>>        String sLoginName sPassword sPrevStateHash
+32979>>>        Boolean bResult
+32979>>>        
+32979>>>        WebGet psValue of oLoginName to sLoginName
+32982>>>        WebGet psValue of oPassword to sPassword
 32985>>>        
-32985>>>        WebGet psValue of oLoginName to sLoginName
-32988>>>        WebGet psValue of oPassword to sPassword
-32991>>>        
-32991>>>        Get UserLogin of ghoWebSessionManager sLoginName sPassword to bResult
-32992>>>        
-32992>>>        If (bResult) Begin
-32994>>>            Send Hide of oLogin
-32995>>>            Send ShowHeader of ghoWebApp
-32996>>>            WebSet psCSSClass of ghoWebApp to ""
-32997>>>            
-32997>>>            WebGet psPrevStateHash to sPrevStateHash
-33000>>>            Send NavigateToStateHash of ghoWebApp sPrevStateHash True
-33001>>>            
-33001>>>            // clear the login values. we don't want to return the login id & password as synchronized properties....
-33001>>>            WebSet psValue of oLoginName to ""
-33002>>>            WebSet psValue of oPassword  to ""
-33003>>>            WebSet pbVisible of oWarning to False
-33004>>>        End
-33004>>>>
-33004>>>        Else Begin
-33005>>>            WebSet pbVisible of oWarning to True
-33006>>>        End
-33006>>>>
-33006>>>    End_Procedure
-33007>>>    
-33007>>>    Procedure OnSubmit
-33010>>>        Send DoLogin
-33011>>>    End_Procedure
-33012>>>    
-33012>>>    Procedure OnLoad
-33015>>>        String sPrevStateHash sView
-33015>>>        
-33015>>>        Forward Send OnLoad
-33017>>>        
-33017>>>        //  Store the current state so we can go back to that later (only if it points to a different view)
-33017>>>        Get StateHash of ghoWebApp to sPrevStateHash
-33018>>>        Send ParseViewStateHash sPrevStateHash (&sView)
-33019>>>        If (Lowercase(sView) <> Lowercase(psStateViewName(Self))) Begin
-33021>>>            WebSet psPrevStateHash to sPrevStateHash
-33022>>>        End
-33022>>>>
-33022>>>        
+32985>>>        Get UserLogin of ghoWebSessionManager sLoginName sPassword to bResult
+32986>>>        
+32986>>>        If (bResult) Begin
+32988>>>            Send Hide of oLogin
+32989>>>            Send ShowHeader of ghoWebApp
+32990>>>            WebSet psCSSClass of ghoWebApp to ""
+32991>>>            
+32991>>>            WebGet psPrevStateHash to sPrevStateHash
+32994>>>            Send NavigateToStateHash of ghoWebApp sPrevStateHash True
+32995>>>            
+32995>>>            // clear the login values. we don't want to return the login id & password as synchronized properties....
+32995>>>            WebSet psValue of oLoginName to ""
+32996>>>            WebSet psValue of oPassword  to ""
+32997>>>            WebSet pbVisible of oWarning to False
+32998>>>        End
+32998>>>>
+32998>>>        Else Begin
+32999>>>            WebSet pbVisible of oWarning to True
+33000>>>        End
+33000>>>>
+33000>>>    End_Procedure
+33001>>>    
+33001>>>    Procedure OnSubmit
+33004>>>        Send DoLogin
+33005>>>    End_Procedure
+33006>>>    
+33006>>>    Procedure OnLoad
+33009>>>        String sPrevStateHash sView
+33009>>>        
+33009>>>        Forward Send OnLoad
+33011>>>        
+33011>>>        //  Store the current state so we can go back to that later (only if it points to a different view)
+33011>>>        Get StateHash of ghoWebApp to sPrevStateHash
+33012>>>        Send ParseViewStateHash sPrevStateHash (&sView)
+33013>>>        If (Lowercase(sView) <> Lowercase(psStateViewName(Self))) Begin
+33015>>>            WebSet psPrevStateHash to sPrevStateHash
+33016>>>        End
+33016>>>>
+33016>>>        
+33016>>>    End_Procedure
+33017>>>    
+33017>>>    Procedure OnBeforeShow
+33020>>>        //  Hide header & apply nice background style
+33020>>>        Send HideHeader to ghoWebApp
+33021>>>        WebSet psCSSClass of ghoWebApp to "LoginBackground"
 33022>>>    End_Procedure
 33023>>>    
-33023>>>    Procedure OnBeforeShow
-33026>>>        //  Hide header & apply nice background style
-33026>>>        Send HideHeader to ghoWebApp
-33027>>>        WebSet psCSSClass of ghoWebApp to "LoginBackground"
-33028>>>    End_Procedure
-33029>>>    
-33029>>>End_Object
-33030>>>
-33030>>>
-33030>>>
-33030>>>
-33030>    Use WebResourceManager.wo
+33023>>>End_Object
+33024>>>
+33024>>>
+33024>>>
+33024>>>
+33024>    Use WebResourceManager.wo
 Including file: WebResourceManager.wo    (E:\repositories\JenkinsDemo\AppSrc\WebResourceManager.wo)
-33030>>>Use cWebResourceManager.pkg
-33030>>>
-33030>>>Object oWebResourceManager is a cWebResourceManager
-33032>>>End_Object
-33033>    
-33033>    Use Dashboard.wo
+33024>>>Use cWebResourceManager.pkg
+33024>>>
+33024>>>Object oWebResourceManager is a cWebResourceManager
+33026>>>End_Object
+33027>    
+33027>    Use Dashboard.wo
 Including file: Dashboard.wo    (E:\repositories\JenkinsDemo\AppSrc\Dashboard.wo)
-33033>>>Use cWebView.pkg
-33033>>>Use cWebPanel.pkg
-33033>>>Use cWebForm.pkg
-33033>>>Use cWebButton.pkg
-33033>>>Use cWebGroup.pkg
-33033>>>Use cWebSpacer.pkg
-33033>>>Use cWebHtmlBox.pkg
-33033>>>Use cWebMenuGroup.pkg
-33033>>>Use cWebMenuItem.pkg
-33033>>>Use cWebLabel.pkg
-33033>>>Use cWebList.pkg
-33033>>>Use cWebColumn.pkg
-33033>>>
-33033>>>Object oDashboard is a cWebView
-33035>>>
-33035>>>    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
-33035>>>    // Add a DDO Structure 
-33035>>>    //
-33035>>>    // There is no need to synchronize a DD structure on the client so we do
-33035>>>    // not set the Server property or send ADDOStructure. We will simply use
-33035>>>    // DDO's to mine data and generate HTML for our cWebHTMLBox objects.
-33035>>>    // It is the HTML in these objects that is sent to the client each time 
-33035>>>    // this page is shown.
-33035>>>    //
-33035>>>    // Also, it is important for the drill-down Navigation interface that we
-33035>>>    // do not set the Server property to some DDO because this will affect 
-33035>>>    // constraints in the next view that we navigate to.
-33035>>>    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-33035>>>
-33035>>>    Set piMaxWidth to 1024
-33036>>>    
-33036>>>    Set psCaption to "Dashboard"
-33037>>>    Set peViewType to vtUndefined
-33038>>>    Set pbShowCaption to False
-33039>>>    Set psCSSClass to "Dashboard"
-33040>>>    
-33040>>>    Object oWebMainPanel is a cWebPanel
-33042>>>        Set piColumnCount to 24
-33043>>>        
-33043>>>        // - - - - - - - - - - - - - - -
-33043>>>        // Main Panel's Responsive Rules
-33043>>>        // - - - - - - - - - - - - - - -
-33043>>>        WebSetResponsive piColumnCount rmMobile to 1
-33044>>>        WebSetResponsive piColumnCount rmTabletPortrait to 16
-33045>>>    
-33045>>>        Object oTiles_grp is a cWebGroup
-33047>>>            Set piColumnSpan to 8
-33048>>>            Set pbShowBorder to False
-33049>>>            Set pbShowCaption to False
-33050>>>            Set piColumnCount to 12
-33051>>>            
-33051>>>            Set psCSSClass to "TilesGroup"
-33052>>>    
-33052>>>            Object oWelcomeTile is a cWebHtmlBox
-33054>>>                Set piColumnSpan to 6
-33055>>>                Set psCSSClass to "Tile Light"
-33056>>>                Set psHtml to '<div Class="WebCon_Sizer"><div class="Tile_Title">Welcome</div><div Class="Tile_Subtitle">--</div></div>'
+33027>>>Use cWebView.pkg
+33027>>>Use cWebPanel.pkg
+33027>>>Use cWebForm.pkg
+33027>>>Use cWebButton.pkg
+33027>>>Use cWebGroup.pkg
+33027>>>Use cWebSpacer.pkg
+33027>>>Use cWebHtmlBox.pkg
+33027>>>Use cWebMenuGroup.pkg
+33027>>>Use cWebMenuItem.pkg
+33027>>>Use cWebLabel.pkg
+33027>>>Use cWebList.pkg
+33027>>>Use cWebColumn.pkg
+33027>>>
+33027>>>Object oDashboard is a cWebView
+33029>>>
+33029>>>    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+33029>>>    // Add a DDO Structure 
+33029>>>    //
+33029>>>    // There is no need to synchronize a DD structure on the client so we do
+33029>>>    // not set the Server property or send ADDOStructure. We will simply use
+33029>>>    // DDO's to mine data and generate HTML for our cWebHTMLBox objects.
+33029>>>    // It is the HTML in these objects that is sent to the client each time 
+33029>>>    // this page is shown.
+33029>>>    //
+33029>>>    // Also, it is important for the drill-down Navigation interface that we
+33029>>>    // do not set the Server property to some DDO because this will affect 
+33029>>>    // constraints in the next view that we navigate to.
+33029>>>    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+33029>>>
+33029>>>    Set piMaxWidth to 1024
+33030>>>    
+33030>>>    Set psCaption to "Dashboard"
+33031>>>    Set peViewType to vtUndefined
+33032>>>    Set pbShowCaption to False
+33033>>>    Set psCSSClass to "Dashboard"
+33034>>>    
+33034>>>    Object oWebMainPanel is a cWebPanel
+33036>>>        Set piColumnCount to 24
+33037>>>        
+33037>>>        // - - - - - - - - - - - - - - -
+33037>>>        // Main Panel's Responsive Rules
+33037>>>        // - - - - - - - - - - - - - - -
+33037>>>        WebSetResponsive piColumnCount rmMobile to 1
+33038>>>        WebSetResponsive piColumnCount rmTabletPortrait to 16
+33039>>>    
+33039>>>        Object oTiles_grp is a cWebGroup
+33041>>>            Set piColumnSpan to 8
+33042>>>            Set pbShowBorder to False
+33043>>>            Set pbShowCaption to False
+33044>>>            Set piColumnCount to 12
+33045>>>            
+33045>>>            Set psCSSClass to "TilesGroup"
+33046>>>    
+33046>>>            Object oWelcomeTile is a cWebHtmlBox
+33048>>>                Set piColumnSpan to 6
+33049>>>                Set psCSSClass to "Tile Light"
+33050>>>                Set psHtml to '<div Class="WebCon_Sizer"><div class="Tile_Title">Welcome</div><div Class="Tile_Subtitle">--</div></div>'
+33051>>>    
+33051>>>                Procedure OnLoad
+33054>>>                    Send UpdateHTML ('<div class="WebCon_Sizer">' + ;                                     '<div class="Tile_Title">Welcome</div>' +;                                     '<div class="Tile_Subtitle">' - htmlEncode(psUserName(ghoWebSessionManager)) - '</div>' +;                                     '</div>')
+33055>>>                End_Procedure
+33056>>>                
+33056>>>            End_Object
 33057>>>    
-33057>>>                Procedure OnLoad
-33060>>>                    Send UpdateHTML ('<div class="WebCon_Sizer">' + ;                                     '<div class="Tile_Title">Welcome</div>' +;                                     '<div class="Tile_Subtitle">' - htmlEncode(psUserName(ghoWebSessionManager)) - '</div>' +;                                     '</div>')
-33061>>>                End_Procedure
-33062>>>                
-33062>>>            End_Object
-33063>>>    
-33063>>>            Object oTile2 is a cWebHtmlBox
-33065>>>                Set pbServerOnClick to True
-33066>>>                Set piColumnSpan to 6
-33067>>>                Set piColumnIndex to 6
-33068>>>                Set psCSSClass to "Tile LightAlternate"
-33069>>>                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div Class="Tile_Title">Tile 2</div><div class="Tile_Subtitle"></div></div>'
-33070>>>                                
-33070>>>                // WebRegisterPath ntNavigateForwardCustom oYourViewName
-33070>>>                
-33070>>>                Procedure OnClick String sId String sParam
-33073>>>                    Send NavigatePath
-33074>>>                End_Procedure
-33075>>>                
-33075>>>            End_Object
+33057>>>            Object oTile2 is a cWebHtmlBox
+33059>>>                Set pbServerOnClick to True
+33060>>>                Set piColumnSpan to 6
+33061>>>                Set piColumnIndex to 6
+33062>>>                Set psCSSClass to "Tile LightAlternate"
+33063>>>                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div Class="Tile_Title">Tile 2</div><div class="Tile_Subtitle"></div></div>'
+33064>>>                                
+33064>>>                // WebRegisterPath ntNavigateForwardCustom oYourViewName
+33064>>>                
+33064>>>                Procedure OnClick String sId String sParam
+33067>>>                    Send NavigatePath
+33068>>>                End_Procedure
+33069>>>                
+33069>>>            End_Object
+33070>>>    
+33070>>>            Object oTile3 is a cWebHtmlBox
+33072>>>                Set pbServerOnClick to True
+33073>>>                Set piColumnSpan to 6
+33074>>>                Set psCSSClass to "Tile Dark"
+33075>>>                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div Class="Tile_Title">Tile 3</div><div class="Tile_Subtitle"></div></div>'
 33076>>>    
-33076>>>            Object oTile3 is a cWebHtmlBox
-33078>>>                Set pbServerOnClick to True
-33079>>>                Set piColumnSpan to 6
-33080>>>                Set psCSSClass to "Tile Dark"
-33081>>>                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div Class="Tile_Title">Tile 3</div><div class="Tile_Subtitle"></div></div>'
+33076>>>                // WebRegisterPath ntNavigateForwardCustom oYourViewName
+33076>>>                
+33076>>>                Procedure OnClick String sId String sParam
+33079>>>                    Send NavigatePath
+33080>>>                End_Procedure
+33081>>>                
+33081>>>            End_Object
 33082>>>    
-33082>>>                // WebRegisterPath ntNavigateForwardCustom oYourViewName
-33082>>>                
-33082>>>                Procedure OnClick String sId String sParam
-33085>>>                    Send NavigatePath
-33086>>>                End_Procedure
-33087>>>                
-33087>>>            End_Object
-33088>>>    
-33088>>>            Object oTile4 is a cWebHtmlBox
-33090>>>                Set pbServerOnClick to True
-33091>>>                Set piColumnSpan to 6
-33092>>>                Set piColumnIndex to 6
-33093>>>                Set psCSSClass to "Tile DarkAlternate"
-33094>>>                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div Class="Tile_Title">Tile 4</div><div class="Tile_Subtitle"></div></div>'
-33095>>>            
-33095>>>                // WebRegisterPath ntNavigateForwardCustom oYourViewName
-33095>>>                
-33095>>>                Procedure OnClick String sId String sParam
-33098>>>                    Send NavigatePath
-33099>>>                End_Procedure
-33100>>>                
-33100>>>            End_Object
-33101>>>        End_Object
-33102>>>    
-33102>>>    End_Object
-33103>>>    
-33103>>>    Procedure OnBeforeShow
-33106>>>        // Each time this view is shown we will update the appropriate information.
-33106>>>    End_Procedure
-33107>>>
-33107>>>End_Object
-33108>    Set phoDefaultView to oDashboard
-33109>
-33109>End_Object
-33110>
-33110>Send StartWebApp of oWebApp
-33111>
+33082>>>            Object oTile4 is a cWebHtmlBox
+33084>>>                Set pbServerOnClick to True
+33085>>>                Set piColumnSpan to 6
+33086>>>                Set piColumnIndex to 6
+33087>>>                Set psCSSClass to "Tile DarkAlternate"
+33088>>>                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div Class="Tile_Title">Tile 4</div><div class="Tile_Subtitle"></div></div>'
+33089>>>            
+33089>>>                // WebRegisterPath ntNavigateForwardCustom oYourViewName
+33089>>>                
+33089>>>                Procedure OnClick String sId String sParam
+33092>>>                    Send NavigatePath
+33093>>>                End_Procedure
+33094>>>                
+33094>>>            End_Object
+33095>>>        End_Object
+33096>>>    
+33096>>>    End_Object
+33097>>>    
+33097>>>    Procedure OnBeforeShow
+33100>>>        // Each time this view is shown we will update the appropriate information.
+33100>>>    End_Procedure
+33101>>>
+33101>>>End_Object
+33102>    Set phoDefaultView to oDashboard
+33103>
+33103>End_Object
+33104>
+33104>Send StartWebApp of oWebApp
+33105>
 Summary
-Memory Available: 8713801728
+Memory Available: 8855281664
 Total Warnings : 0
-Total Errors   : 0
-Total Symbols  : 22261
+Total Errors   : 1
+Total Symbols  : 22258
 Total Resources: 0
-Total Commands : 33110
+Total Commands : 33104
 Total Windows  : 0
 Total Pages    : 0
-Static Data    : 423377
-Message area   : 225749
-Total Blocks   : 15074
+Static Data    : 423325
+Message area   : 225686
+Total Blocks   : 15073
+1 ERROR HAS BEEN FOUND.

@@ -42,7 +42,7 @@ Object oWebApp is a cWebApp
                 Object oDashboard_itm is a cWebMenuItem
                     Set psCaption to C_$Dashboard
                     
-                    WebRegisterPath ntNavigateBegin oDashboard
+                    RegisterPath ntNavigateBegin oDashboard
 
                     Procedure OnClick
                         Send NavigatePath
